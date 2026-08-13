@@ -1,0 +1,4 @@
+.venv-pretix/
+__pycache__/
+*.pyc
+konzept-pretix-schulungen.md

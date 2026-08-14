@@ -1,0 +1,5 @@
+[plugin]
+package = "pretix-trainings"
+modules = [ "pretix_trainings" ]
+marketplace_name = "trainings"
+

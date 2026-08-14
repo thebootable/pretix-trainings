@@ -1,0 +1,648 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pretix-trainings 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-13 20:37+0200\n"
+"PO-Revision-Date: 2026-08-13 20:37\n"
+"Last-Translator: Tobias Berndt\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+#: pretix_trainings/apps.py:17
+#: pretix_trainings/signals.py:216
+msgid "Schulungen"
+msgstr "Trainings"
+
+#: pretix_trainings/apps.py:20
+msgid "Raumverwaltung, mehrtaegige Kurse und Teilnahmebescheinigungen fuer pretix-Schulungen"
+msgstr "Room management, multi-day courses and certificates of attendance for pretix trainings"
+
+#: pretix_trainings/bescheinigung_views.py:64
+msgid "Das Layout wurde angelegt."
+msgstr "The layout has been created."
+
+#: pretix_trainings/bescheinigung_views.py:79
+msgid "Wir konnten Ihre Änderungen nicht speichern. Details siehe unten."
+msgstr "We could not save your changes. Please see below for details."
+
+#: pretix_trainings/bescheinigung_views.py:94
+#: pretix_trainings/bescheinigung_views.py:132
+#: pretix_trainings/bescheinigung_views.py:166
+msgid "Das gewünschte Layout existiert nicht."
+msgstr "The requested layout does not exist."
+
+#: pretix_trainings/bescheinigung_views.py:107
+msgid "Das Standard-Layout wurde geändert."
+msgstr "The default layout has been changed."
+
+#: pretix_trainings/bescheinigung_views.py:145
+msgid "Das Layout wurde gelöscht."
+msgstr "The layout has been deleted."
+
+#: pretix_trainings/bescheinigung_views.py:170
+#, python-brace-format
+msgid "Bescheinigungs-Layout: {}"
+msgstr "Certificate layout: {}"
+
+#: pretix_trainings/exporters.py:19
+msgid "Teilnahmebescheinigungen (ZIP)"
+msgstr "Certificates of attendance (ZIP)"
+
+#: pretix_trainings/exporters.py:21
+msgid "Alle bereits ausstellbaren Teilnahmebescheinigungen eines Termins als ZIP-Datei mit einer PDF-Datei je Position."
+msgstr "All certificates of attendance already available for a date, as a ZIP file with one PDF file per position."
+
+#: pretix_trainings/exporters.py:24
+msgctxt "export_category"
+msgid "PDF collections"
+msgstr "PDF collections"
+
+#: pretix_trainings/exporters.py:32
+#: pretix_trainings/signals.py:80 (Termin)
+msgid "Termin"
+msgstr "Date"
+
+#: pretix_trainings/forms.py:17
+msgid "Name der Raum-Meta-Property"
+msgstr "Name of the room meta property"
+
+#: pretix_trainings/forms.py:19
+msgid "Name der Event- bzw. Subevent-Meta-Property, deren Wert als Raum ausgewertet wird. Muss zu einer unter „Meta-Daten“ angelegten Eigenschaft passen."
+msgstr "Name of the event or subevent meta property whose value is interpreted as the room. Must match a property created under \"Meta data\"."
+
+#: pretix_trainings/forms.py:25
+msgid "Betreff der Raumänderungs-Mail"
+msgstr "Subject of the room change email"
+
+#: pretix_trainings/forms.py:30
+msgid "Text der Raumänderungs-Mail"
+msgstr "Text of the room change email"
+
+#: pretix_trainings/forms.py:35
+msgid "Kalenderdatei (ICS) an die Raumänderungs-Mail anhängen"
+msgstr "Attach calendar file (ICS) to the room change email"
+
+#: pretix_trainings/forms.py:37
+msgid "Formal korrekt (aktualisierte SEQUENCE, METHOD:REQUEST), in der Praxis aber unzuverlässig: Outlook aktualisiert damit meist den vorhandenen Termin, viele andere Kalender-Apps legen stattdessen einen zweiten Termin an oder ignorieren die Datei komplett. Die E-Mail selbst bleibt in jedem Fall der verbindliche Kanal für die Raumänderung, unabhängig von dieser Einstellung."
+msgstr "Formally correct (updated SEQUENCE, METHOD:REQUEST), but unreliable in practice: Outlook usually updates the existing appointment, while many other calendar apps create a second appointment instead or ignore the file entirely. The email itself always remains the binding channel for the room change, regardless of this setting."
+
+#: pretix_trainings/forms.py:46
+msgid "Ausstellungsregel für Teilnahmebescheinigungen"
+msgstr "Issuance rule for certificates of attendance"
+
+#: pretix_trainings/forms.py:49
+msgid "always: verfügbar sobald der Termin vorbei ist. checkin_all: Check-in auf allen Session-Check-in-Listen erforderlich (ohne Sessions: Standard-Check-in-Liste des Termins). checkin_min: Check-in auf mindestens N Listen. manual: Freigabe je Bestellung durch Backend-Nutzer."
+msgstr "always: available as soon as the date is over. checkin_all: check-in on all session check-in lists required (without sessions: the date's default check-in list). checkin_min: check-in on at least N lists. manual: approval per order by a backend user."
+
+#: pretix_trainings/forms.py:57
+msgid "Mindestanzahl Check-ins (nur bei Regel „checkin_min“)"
+msgstr "Minimum number of check-ins (only for rule \"checkin_min\")"
+
+#: pretix_trainings/forms.py:62
+msgid "Format der Bescheinigungsnummer"
+msgstr "Format of the certificate number"
+
+#: pretix_trainings/forms.py:64
+msgid "Python-Format-String mit den Platzhaltern {{nr}} (fortlaufende Nummer), {{event}} (Event-Kürzel) und {{jahr}} (Ausstellungsjahr), z. B. „{{event}}-{{jahr}}-{{nr:04d}}“."
+msgstr "Python format string with the placeholders {{nr}} (sequential number), {{event}} (event slug) and {{jahr}} (year of issue), e.g. \"{{event}}-{{jahr}}-{{nr:04d}}\"."
+
+#: pretix_trainings/forms.py:70
+msgid "Pausenabzug (Minuten pro Tag)"
+msgstr "Break deduction (minutes per day)"
+
+#: pretix_trainings/forms.py:72
+msgid "Wird von den Kursstunden abgezogen: einmal pro Session-Tag, bzw. einmal insgesamt, wenn Modul B (Sessions) nicht genutzt wird."
+msgstr "Deducted from the course hours: once per session day, or once in total if module B (sessions) is not used."
+
+#: pretix_trainings/forms.py:99
+#: pretix_trainings/forms.py:278
+msgid "Das Ende muss nach dem Start liegen."
+msgstr "The end must be after the start."
+
+#: pretix_trainings/forms.py:125
+msgid "Diese Nummer wird bereits verwendet."
+msgstr "This number is already in use."
+
+#: pretix_trainings/forms.py:135
+msgid "Sessions dürfen sich zeitlich nicht überlappen."
+msgstr "Sessions must not overlap in time."
+
+#: pretix_trainings/forms.py:151
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:3
+msgid "Sessions"
+msgstr "Sessions"
+
+#: pretix_trainings/forms.py:230
+#, python-format
+msgid "Die Check-in-Liste „%(name)s“ enthält bereits Check-ins und wurde deshalb nicht gelöscht."
+msgstr "The check-in list \"%(name)s\" already contains check-ins and was therefore not deleted."
+
+#: pretix_trainings/forms.py:247
+#, python-format
+msgid "Achtung: Session „%(title)s“ liegt außerhalb des Zeitraums dieses Termins."
+msgstr "Attention: session \"%(title)s\" is outside this date's time range."
+
+#: pretix_trainings/forms.py:263
+msgid "täglich"
+msgstr "daily"
+
+#: pretix_trainings/forms.py:264
+msgid "wöchentlich"
+msgstr "weekly"
+
+#: pretix_trainings/forms.py:267
+msgid "Startdatum"
+msgstr "Start date"
+
+#: pretix_trainings/forms.py:268
+msgid "Uhrzeit von"
+msgstr "Time from"
+
+#: pretix_trainings/forms.py:269
+msgid "Uhrzeit bis"
+msgstr "Time until"
+
+#: pretix_trainings/forms.py:270
+msgid "Anzahl Termine"
+msgstr "Number of dates"
+
+#: pretix_trainings/forms.py:271
+msgid "Rhythmus"
+msgstr "Frequency"
+
+#: pretix_trainings/forms.py:302
+#: pretix_trainings/models.py:158
+msgid "Nur für folgende Produkte"
+msgstr "Only for the following products"
+
+#: pretix_trainings/forms.py:303
+#: pretix_trainings/models.py:159
+msgid "Leer = für alle Produkte."
+msgstr "Empty = for all products."
+
+#: pretix_trainings/models.py:29
+msgid "Alter Raum"
+msgstr "Previous room"
+
+#: pretix_trainings/models.py:32
+msgid "Neuer Raum"
+msgstr "New room"
+
+#: pretix_trainings/models.py:34
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:20
+msgid "Erkannt am"
+msgstr "Detected on"
+
+#: pretix_trainings/models.py:36
+msgid "Versendet am"
+msgstr "Sent on"
+
+#: pretix_trainings/models.py:46
+msgid "Anzahl Empfänger"
+msgstr "Number of recipients"
+
+#: pretix_trainings/models.py:49
+msgid "Verworfen am"
+msgstr "Discarded on"
+
+#: pretix_trainings/models.py:74
+msgid "Nummer"
+msgstr "Number"
+
+#: pretix_trainings/models.py:75
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:8
+msgid "Titel"
+msgstr "Title"
+
+#: pretix_trainings/models.py:76
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:9
+msgid "Start"
+msgstr "Start"
+
+#: pretix_trainings/models.py:77
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:10
+msgid "Ende"
+msgstr "End"
+
+#: pretix_trainings/models.py:81
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:11
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:12
+msgid "Raum"
+msgstr "Room"
+
+#: pretix_trainings/models.py:83
+msgid "Überschreibt für diesen Termin den Raum des Subevents. Leer = Raum des Subevents gilt."
+msgstr "Overrides the subevent's room for this date. Empty = the subevent's room applies."
+
+#: pretix_trainings/models.py:149
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:16
+msgid "Name"
+msgstr "Name"
+
+#: pretix_trainings/models.py:154
+msgid "Standard-Layout"
+msgstr "Default layout"
+
+#: pretix_trainings/signals.py:80
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:5
+msgid "Offene Raumänderungen"
+msgstr "Open room changes"
+
+#: pretix_trainings/signals.py:107
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:5
+msgid "Bescheinigungs-Layouts"
+msgstr "Certificate layouts"
+
+#: pretix_trainings/signals.py:128
+msgid "Bescheinigung: Teilnehmername"
+msgstr "Certificate: Attendee name"
+
+#: pretix_trainings/signals.py:129
+msgid "Max Mustermann"
+msgstr "John Doe"
+
+#: pretix_trainings/signals.py:133
+msgid "Bescheinigung: Kurstitel"
+msgstr "Certificate: Course title"
+
+#: pretix_trainings/signals.py:134
+msgid "Musterschulung"
+msgstr "Sample training"
+
+#: pretix_trainings/signals.py:138
+msgid "Bescheinigung: Kurstermine"
+msgstr "Certificate: Course dates"
+
+#: pretix_trainings/signals.py:139
+msgid "Di, 15.09.2026, 09:00–17:00 Uhr"
+msgstr "Tue, 15.09.2026, 09:00–17:00"
+
+#: pretix_trainings/signals.py:143
+msgid "Bescheinigung: Kursstunden"
+msgstr "Certificate: Course hours"
+
+#: pretix_trainings/signals.py:148
+msgid "Bescheinigung: Ausstellungsdatum"
+msgstr "Certificate: Issue date"
+
+#: pretix_trainings/signals.py:153
+msgid "Bescheinigung: Bescheinigungsnummer"
+msgstr "Certificate: Certificate number"
+
+#: pretix_trainings/views.py:135
+#: pretix_trainings/views.py:191
+msgid "Diese Raumänderung wurde bereits versendet oder verworfen."
+msgstr "This room change has already been sent or discarded."
+
+#: pretix_trainings/views.py:148
+#, python-format
+msgid "Die Benachrichtigung wird an %(count)s Empfänger versendet."
+msgstr "The notification will be sent to %(count)s recipients."
+
+#: pretix_trainings/views.py:188
+msgid "Die Raumänderung wurde verworfen."
+msgstr "The room change has been discarded."
+
+#: pretix_trainings/views.py:249
+#, python-format
+msgid "Der Termin am %(day)s überschneidet sich mit einer bestehenden Session. Es wurde nichts angelegt."
+msgstr "The date on %(day)s overlaps with an existing session. Nothing was created."
+
+#: pretix_trainings/views.py:276
+#, python-format
+msgid "%(count)s der erzeugten Termine liegen außerhalb des Zeitraums dieses Termins."
+msgstr "%(count)s of the created dates are outside this date's time range."
+
+#: pretix_trainings/views.py:284
+#, python-format
+msgid "%(count)s Termine wurden angelegt."
+msgstr "%(count)s dates have been created."
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:3
+msgid "Layout löschen"
+msgstr "Delete layout"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:16
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:16
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:17
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:24
+msgid "Abbrechen"
+msgstr "Cancel"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:19
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:19
+msgid "Löschen"
+msgstr "Delete"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:4
+msgid "Neues Bescheinigungs-Layout"
+msgstr "New certificate layout"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:19
+msgid "Anlegen"
+msgstr "Create"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:8
+msgid "Neues Layout"
+msgstr "New layout"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:17
+msgid "Nur für Produkte"
+msgstr "Only for products"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:18
+msgid "Standard"
+msgstr "Default"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:34
+msgid "alle"
+msgstr "all"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:43
+msgid "Als Standard setzen"
+msgstr "Set as default"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:59
+msgid "Es wurde noch kein Bescheinigungs-Layout angelegt."
+msgstr "No certificate layout has been created yet."
+
+#: pretix_trainings/templates/pretix_trainings/order_bescheinigung.html:4
+msgid "Teilnahmebescheinigung"
+msgstr "Certificate of attendance"
+
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:4
+msgid "Termine dieses Kurses"
+msgstr "Dates of this course"
+
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:17
+msgid "Termine in Kalender exportieren"
+msgstr "Export dates to calendar"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:3
+msgid "Raumänderung: Vorschau & Senden"
+msgstr "Room change: preview & send"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:14
+msgid "Für diesen Termin gibt es aktuell keine passenden Bestellungen. Es würde niemand benachrichtigt."
+msgstr "There are currently no matching orders for this date. No one would be notified."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:18
+msgid "Vorschau"
+msgstr "Preview"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:20
+msgid "Betreff"
+msgstr "Subject"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:49
+msgid "Zurück"
+msgstr "Back"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:52
+msgid "Jetzt senden"
+msgstr "Send now"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:3
+msgid "Raumänderung verwerfen"
+msgstr "Discard room change"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:20
+msgid "Verwerfen"
+msgstr "Discard"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:18
+msgid "Bisher"
+msgstr "Previous"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:19
+msgid "Neu"
+msgstr "New"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:21
+msgid "Betroffene Bestellungen"
+msgstr "Affected orders"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:40
+msgid "Vorschau &amp; Senden"
+msgstr "Preview &amp; send"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:55
+msgid "Aktuell liegen keine offenen Raumänderungen vor."
+msgstr "There are currently no open room changes."
+
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:4
+msgid "Termine erzeugen"
+msgstr "Create dates"
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:14
+msgid "Mehrere Termine auf einmal erzeugen"
+msgstr "Create multiple dates at once"
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:16
+msgid "Änderungen an diesem Formular werden dabei nicht gespeichert."
+msgstr "Changes to this form will not be saved in the process."
+
+#: pretix_trainings/templates/pretix_trainings/settings.html:5
+msgid "Schulungen-Einstellungen"
+msgstr "Training settings"
+
+#: pretix_trainings/templates/pretix_trainings/settings.html:15
+msgid "Speichern"
+msgstr "Save"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:7
+msgid "Nr."
+msgstr "No."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:7
+msgid "Hier erscheinen Termine, deren Raum sich geändert hat. Solange ein Eintrag hier offen ist, wurde noch keine Benachrichtigung an die Teilnehmenden verschickt."
+msgstr "Dates whose room has changed appear here. As long as an entry here is open, no notification has been sent to attendees yet."
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:6
+msgid "Einzeltermine dieses Kursdurchlaufs. Sie sind nicht separat buchbar - buchbar bleibt ausschließlich der gesamte Termin. Bleibt der Raum leer, gilt der Raum des Termins."
+msgstr "Individual sessions of this course run. They are not bookable separately - only the entire date remains bookable. If the room is left empty, the date's room applies."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:9
+#, python-format
+msgid "Soll die erkannte Raumänderung für <strong>%(subevent)s</strong> (%(alt)s &rarr; %(neu)s) wirklich verworfen werden, ohne eine Benachrichtigung zu versenden?"
+msgstr "Should the detected room change for <strong>%(subevent)s</strong> (%(alt)s &rarr; %(neu)s) really be discarded without sending a notification?"
+
+#: pretix_trainings/templates/pretix_trainings/order_bescheinigung.html:12
+#, python-format
+msgid "Bescheinigung für %(name)s herunterladen"
+msgstr "Download certificate for %(name)s"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:28
+#, python-format
+msgid "Empfänger (1 Adresse)"
+msgid_plural "Empfänger (%(counter)s Adressen)"
+msgstr[0] "Recipient (1 address)"
+msgstr[1] "Recipients (%(counter)s addresses)"
+
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:8
+#, python-format
+msgid "Erzeugt mehrere Sessions für %(subevent)s auf einmal. Die erzeugten Sessions können anschließend im Termin-Editor einzeln angepasst werden."
+msgstr "Creates multiple sessions for %(subevent)s at once. The created sessions can then be adjusted individually in the date editor."
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:9
+#, python-format
+msgid "Soll das Bescheinigungs-Layout <strong>%(name)s</strong> wirklich gelöscht werden?"
+msgstr "Should the certificate layout <strong>%(name)s</strong> really be deleted?"
+
+#: pretix_trainings/dsgvo.py:196
+msgid "Teilnehmerdaten"
+msgstr "Attendee data"
+
+#: pretix_trainings/dsgvo.py:198
+msgid "Namen und Anschriften auf den Buchungspositionen dieses Termins."
+msgstr "Names and postal addresses on this date's booking positions."
+
+#: pretix_trainings/dsgvo.py:206
+msgid "Fragen-Antworten"
+msgstr "Question answers"
+
+#: pretix_trainings/dsgvo.py:208
+msgid "Antworten auf Bestellfragen zu Buchungspositionen dieses Termins."
+msgstr "Answers to order questions for this date's booking positions."
+
+#: pretix_trainings/dsgvo.py:215
+msgid "Tickets"
+msgstr "Tickets"
+
+#: pretix_trainings/dsgvo.py:217
+msgid "Zwischengespeicherte Ticket-PDFs. Werden bei Bedarf neu erzeugt."
+msgstr "Cached ticket PDFs. Will be regenerated on demand."
+
+#: pretix_trainings/dsgvo.py:224
+msgid "Kontaktdaten"
+msgstr "Contact data"
+
+#: pretix_trainings/dsgvo.py:226
+msgid "E-Mail-Adresse, Telefonnummer und Kundenkonto-Verknüpfung der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Email address, phone number and customer account link of the order - only for orders that exclusively contain positions in dates that are already over."
+
+#: pretix_trainings/dsgvo.py:236
+msgid "Rechnungsadresse"
+msgstr "Invoice address"
+
+#: pretix_trainings/dsgvo.py:238
+msgid "Rechnungsadresse der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Invoice address of the order - only for orders that exclusively contain positions in dates that are already over."
+
+#: pretix_trainings/dsgvo.py:249
+msgid "Rechnungen"
+msgstr "Invoices"
+
+#: pretix_trainings/dsgvo.py:251
+msgid "Rechnungs-PDFs und deren personenbezogener Textinhalt. Rechnungsnummer und Beträge bleiben erhalten - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Invoice PDFs and their personal text content. Invoice number and totals are preserved - only for orders that exclusively contain positions in dates that are already over."
+
+#: pretix_trainings/dsgvo.py:265
+msgid "Zahlungsdaten"
+msgstr "Payment data"
+
+#: pretix_trainings/dsgvo.py:267
+msgid "Zahlungs- und Rückerstattungsdaten, soweit der jeweilige Zahlungsdienstleister eine Löschung unterstützt - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Payment and refund data, as far as the respective payment provider supports deletion - only for orders that exclusively contain positions in dates that are already over."
+
+#: pretix_trainings/forms.py:311
+msgid "Ich habe geprüft, dass für die ausgewählten steuerrelevanten Daten keine gesetzliche Aufbewahrungspflicht mehr besteht."
+msgstr "I have verified that no legal retention obligation applies anymore to the selected tax-relevant data."
+
+#: pretix_trainings/forms.py:325
+msgid "Bitte mindestens eine Kategorie auswählen."
+msgstr "Please select at least one category."
+
+#: pretix_trainings/forms.py:330
+msgid "Für steuerrelevante Daten muss die Aufbewahrungsprüfung bestätigt werden."
+msgstr "For tax-relevant data, the retention check must be confirmed."
+
+#: pretix_trainings/views.py:338
+msgid "Dieser Termin liegt noch nicht in der Vergangenheit und kann deshalb noch nicht anonymisiert werden."
+msgstr "This date is not yet in the past and can therefore not be anonymized yet."
+
+#: pretix_trainings/views.py:373
+#, python-format
+msgid "Die ausgewählten Daten für „%(subevent)s“ wurden anonymisiert."
+msgstr "The selected data for \"%(subevent)s\" has been anonymized."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:4
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:6
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_dsgvo.html:6
+msgid "Termindaten anonymisieren"
+msgstr "Anonymize date data"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:9
+#, python-format
+msgid "Entfernt personenbezogene Daten der Bestellungen zu %(subevent)s. Die Bestellungen selbst bleiben für Buchhaltung und Statistik erhalten - nur die ausgewählten Datenarten werden anonymisiert."
+msgstr "Removes personal data from orders for %(subevent)s. The orders themselves remain for accounting and statistics - only the selected data types are anonymized."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:16
+#, python-format
+msgid "Betroffene Bestellungen insgesamt: %(total)s, davon ausschließlich diesen Termin betreffend: %(fully)s."
+msgstr "Affected orders in total: %(total)s, of which exclusively concerning this date: %(fully)s."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:22
+msgid "Bei den übrigen Bestellungen enthält dieselbe Bestellung zusätzlich mindestens eine Position in einem noch nicht vergangenen Termin. Bei diesen werden nur die Teilnehmerdaten und Fragen-Antworten dieses Termins entfernt, nicht die bestellungsweiten Daten (Kontaktdaten, Rechnungsadresse, Rechnungen, Zahlungsdaten)."
+msgstr "For the remaining orders, the same order also contains at least one position in a date that is not yet over. For these, only this date's attendee data and question answers are removed, not the order-wide data (contact data, invoice address, invoices, payment data)."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:33
+msgid "Datenart"
+msgstr "Data type"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:34
+msgid "Betroffene Datensätze"
+msgstr "Affected records"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:44
+msgid "steuerrelevant"
+msgstr "tax-relevant"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:60
+msgid "Anonymisieren"
+msgstr "Anonymize"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_dsgvo.html:3
+msgid "Datenschutz"
+msgstr "Data protection"
+
+#: pretix_trainings/models.py:29
+msgid "Session"
+msgstr "Session"
+
+#: pretix_trainings/models.py:35
+msgid "Leer = der Raum des gesamten Termins hat sich geändert. Gesetzt = nur der Raum dieser einzelnen Session."
+msgstr "Empty = the room of the entire date has changed. Set = only the room of this individual session."
+
+#: pretix_trainings/models.py:106
+#, python-format
+msgid "Tag %(n)s"
+msgstr "Day %(n)s"
+
+#: pretix_trainings/placeholders.py:113
+#, python-format
+msgid "Betrifft: %(session)s"
+msgstr "Affects: %(session)s"
+
+#: pretix_trainings/placeholders.py:118
+msgid "Betrifft: Tag 2"
+msgstr "Affects: Day 2"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:9
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:15
+#, python-format
+msgid "Betrifft nur Session: %(session)s"
+msgstr "Affects only session: %(session)s"
+
+#: pretix_trainings/templates/pretix_trainings/organizer_raumaenderung_list.html:7
+msgid "Alle offenen Raumänderungen über sämtliche Events dieses Veranstalters hinweg, für die Sie Bestellungen verwalten dürfen. Vorschau und Versand erfolgen weiterhin je Event."
+msgstr "All open room changes across all events of this organizer that you are allowed to manage orders for. Preview and sending still happen per event."
+
+#: pretix_trainings/templates/pretix_trainings/organizer_raumaenderung_list.html:19
+msgid "Event"
+msgstr "Event"

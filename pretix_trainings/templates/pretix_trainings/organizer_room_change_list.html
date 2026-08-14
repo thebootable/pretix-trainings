@@ -1,0 +1,67 @@
+{% extends "pretixcontrol/organizers/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Offene Raumänderungen" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Offene Raumänderungen" %}</h1>
+    <p>
+        {% blocktrans trimmed %}
+            Alle offenen Raumänderungen über sämtliche Events dieses Veranstalters hinweg, für die Sie
+            Bestellungen verwalten dürfen. Vorschau und Versand erfolgen weiterhin je Event.
+        {% endblocktrans %}
+    </p>
+    {% if room_changes %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{% trans "Event" %}</th>
+                    <th>{% trans "Termin" %}</th>
+                    <th>{% trans "Bisher" %}</th>
+                    <th>{% trans "Neu" %}</th>
+                    <th>{% trans "Erkannt am" %}</th>
+                    <th>{% trans "Betroffene Bestellungen" %}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in room_changes %}
+                    <tr>
+                        <td>
+                            <a href="{% url "control:event.index" organizer=entry.subevent.event.organizer.slug event=entry.subevent.event.slug %}">
+                                {{ entry.subevent.event }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url "control:event.subevent" organizer=entry.subevent.event.organizer.slug event=entry.subevent.event.slug subevent=entry.subevent.pk %}">
+                                {{ entry.subevent.date_from|date:"SHORT_DATETIME_FORMAT" }} · {{ entry.subevent }}
+                            </a>
+                            {% if entry.session %}
+                                <br><span class="label label-default">{{ entry.session.short_label }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ entry.old_value }}</td>
+                        <td>{{ entry.new_value }}</td>
+                        <td>{{ entry.detected_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ entry.affected_order_count }}</td>
+                        <td class="text-right flip">
+                            <a class="btn btn-sm btn-primary"
+                               href="{% url "plugins:pretix_trainings:room_change.detail" organizer=entry.subevent.event.organizer.slug event=entry.subevent.event.slug pk=entry.pk %}">
+                                {% trans "Vorschau &amp; Senden" %}
+                            </a>
+                            <a class="btn btn-sm btn-default"
+                               href="{% url "plugins:pretix_trainings:room_change.discard" organizer=entry.subevent.event.organizer.slug event=entry.subevent.event.slug pk=entry.pk %}">
+                                {% trans "Verwerfen" %}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "pretixcontrol/pagination.html" %}
+    {% else %}
+        <div class="empty-collection">
+            <p>{% trans "Aktuell liegen keine offenen Raumänderungen vor." %}</p>
+        </div>
+    {% endif %}
+{% endblock %}

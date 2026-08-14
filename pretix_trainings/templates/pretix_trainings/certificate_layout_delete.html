@@ -1,0 +1,23 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Layout löschen" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Layout löschen" %}</h1>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <p>
+            {% blocktrans trimmed with name=layout.name %}
+                Soll das Bescheinigungs-Layout <strong>{{ name }}</strong> wirklich gelöscht werden?
+            {% endblocktrans %}
+        </p>
+        <div class="form-group submit-group">
+            <a href="{% url "plugins:pretix_trainings:certificate.layout.list" organizer=request.event.organizer.slug event=request.event.slug %}"
+               class="btn btn-default btn-cancel">
+                {% trans "Abbrechen" %}
+            </a>
+            <button type="submit" class="btn btn-danger btn-save">
+                {% trans "Löschen" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

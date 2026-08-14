@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="panel panel-default schulungen-termine">
+    <div class="panel-heading">
+        <h3 class="panel-title">{% trans "Termine dieses Kurses" %}</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-unstyled">
+            {% for session in sessions %}
+                <li>
+                    {{ session.start|date:"SHORT_DATETIME_FORMAT" }}–{{ session.end|date:"TIME_FORMAT" }}
+                    {% if session.title %}&ndash; {{ session.title }}{% endif %}
+                    {% if session.room %}({% trans "Raum" %} {{ session.room }}){% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url "plugins:pretix_trainings:session.ical" organizer=event.organizer.slug event=event.slug subevent=subevent.pk %}">
+            <span class="fa fa-calendar"></span> {% trans "Termine in Kalender exportieren" %}
+        </a>
+    </div>
+</div>

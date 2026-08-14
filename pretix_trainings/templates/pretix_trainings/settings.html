@@ -1,0 +1,23 @@
+{% extends "pretixcontrol/event/settings_base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block inside %}
+    <h1>{% trans "Schulungen-Einstellungen" %}</h1>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_field form.training_room_property layout="horizontal" %}
+        {% bootstrap_field form.training_mail_subject layout="horizontal" %}
+        {% bootstrap_field form.training_mail_text layout="horizontal" %}
+        {% bootstrap_field form.training_ics_attachment layout="horizontal" %}
+        {% bootstrap_field form.training_certificate_rule layout="horizontal" %}
+        {% bootstrap_field form.training_certificate_checkin_min layout="horizontal" %}
+        {% bootstrap_field form.training_certificate_number_format layout="horizontal" %}
+        {% bootstrap_field form.training_certificate_break_deduction layout="horizontal" %}
+        <div class="form-group submit-group">
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Speichern" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

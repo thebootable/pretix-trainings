@@ -1,0 +1,5 @@
+recursive-include pretix_trainings/static *
+recursive-include pretix_trainings/templates *
+recursive-include pretix_trainings/locale *
+include LICENSE
+exclude .gitlab-ci.yml

@@ -1,0 +1,26 @@
+{% load i18n %}
+<fieldset>
+    <legend>{% trans "Sessions" %}</legend>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{% trans "Nr." %}</th>
+            <th>{% trans "Titel" %}</th>
+            <th>{% trans "Start" %}</th>
+            <th>{% trans "Ende" %}</th>
+            <th>{% trans "Raum" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for session in sessions %}
+            <tr>
+                <td>{{ session.sequence }}</td>
+                <td>{{ session.title }}</td>
+                <td>{{ session.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                <td>{{ session.end|date:"SHORT_DATETIME_FORMAT" }}</td>
+                <td>{{ session.room }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</fieldset>

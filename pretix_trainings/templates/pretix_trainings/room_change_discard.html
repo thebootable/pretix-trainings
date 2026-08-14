@@ -1,0 +1,29 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Raumänderung verwerfen" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Raumänderung verwerfen" %}</h1>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <p>
+            {% blocktrans trimmed with subevent=room_change.subevent alt=room_change.old_value neu=room_change.new_value %}
+                Soll die erkannte Raumänderung für <strong>{{ subevent }}</strong>
+                ({{ alt }} &rarr; {{ neu }}) wirklich verworfen werden, ohne eine Benachrichtigung zu versenden?
+            {% endblocktrans %}
+            {% if room_change.session %}
+                <br>{% blocktrans trimmed with session=room_change.session.short_label %}
+                    Betrifft nur Session: {{ session }}
+                {% endblocktrans %}
+            {% endif %}
+        </p>
+        <div class="form-group submit-group">
+            <a href="{% url "plugins:pretix_trainings:room_change.list" organizer=request.event.organizer.slug event=request.event.slug %}"
+               class="btn btn-default btn-cancel">
+                {% trans "Abbrechen" %}
+            </a>
+            <button type="submit" class="btn btn-danger btn-save">
+                {% trans "Verwerfen" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

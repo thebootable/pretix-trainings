@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="panel panel-default training-certificate">
+    <div class="panel-heading">
+        <h3 class="panel-title">{% trans "Teilnahmebescheinigung" %}</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-unstyled">
+            {% for link in links %}
+                <li>
+                    <a href="{{ link.url }}">
+                        <span class="fa fa-file-pdf-o"></span>
+                        {% blocktrans trimmed with name=link.position.attendee_name|default:link.position.order.email %}
+                            Bescheinigung für {{ name }} herunterladen
+                        {% endblocktrans %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

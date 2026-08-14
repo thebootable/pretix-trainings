@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load bootstrap3 %}
+{% bootstrap_formset_errors form.formset %}
+{{ form.formset.management_form }}
+<p class="help-block">
+    {% blocktrans trimmed %}
+        Einzeltermine dieses Kursdurchlaufs. Sie sind nicht separat buchbar - buchbar bleibt
+        ausschließlich der gesamte Termin. Bleibt der Raum leer, gilt der Raum des Termins.
+    {% endblocktrans %}
+</p>
+{% if form.subevent and form.subevent.pk %}
+    <p>
+        <a href="{% url "plugins:pretix_trainings:session.bulk_create" organizer=request.event.organizer.slug event=request.event.slug subevent=form.subevent.pk %}">
+            {% trans "Mehrere Termine auf einmal erzeugen" %}
+        </a>
+        ({% trans "Änderungen an diesem Formular werden dabei nicht gespeichert." %})
+    </p>
+{% endif %}
+{% for sform in form.formset.forms %}
+    <div class="panel panel-default">
+        <div class="panel-body form-horizontal">
+            {{ sform.id }}
+            {% bootstrap_form_errors sform %}
+            {% if sform.instance.pk %}
+                {% bootstrap_field sform.DELETE layout="control" %}
+            {% endif %}
+            {% bootstrap_field sform.sequence layout="control" %}
+            {% bootstrap_field sform.title layout="control" %}
+            {% bootstrap_field sform.start layout="control" %}
+            {% bootstrap_field sform.end layout="control" %}
+            {% bootstrap_field sform.room layout="control" %}
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,62 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Bescheinigungs-Layouts" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Bescheinigungs-Layouts" %}</h1>
+    <p>
+        <a href="{% url "plugins:pretix_trainings:certificate.layout.add" organizer=request.event.organizer.slug event=request.event.slug %}">
+            <button class="btn btn-default"><span class="fa fa-plus"></span> {% trans "Neues Layout" %}</button>
+        </a>
+    </p>
+    {% if layouts %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Nur für Produkte" %}</th>
+                    <th>{% trans "Standard" %}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for layout in layouts %}
+                    <tr>
+                        <td>
+                            <a href="{% url "plugins:pretix_trainings:certificate.layout.edit" organizer=request.event.organizer.slug event=request.event.slug layout=layout.pk %}">
+                                {{ layout.name }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if layout.item_filter.all %}
+                                {% for item in layout.item_filter.all %}{{ item }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                            {% else %}
+                                <em>{% trans "alle" %}</em>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if layout.is_default %}
+                                <span class="fa fa-check"></span>
+                            {% else %}
+                                <form action="{% url "plugins:pretix_trainings:certificate.layout.default" organizer=request.event.organizer.slug event=request.event.slug layout=layout.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-xs btn-default">{% trans "Als Standard setzen" %}</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                        <td class="text-right flip">
+                            <a class="btn btn-sm btn-danger" href="{% url "plugins:pretix_trainings:certificate.layout.delete" organizer=request.event.organizer.slug event=request.event.slug layout=layout.pk %}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-collection">
+            <p>{% trans "Es wurde noch kein Bescheinigungs-Layout angelegt." %}</p>
+        </div>
+    {% endif %}
+{% endblock %}

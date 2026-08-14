@@ -1,0 +1,648 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pretix-trainings 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-13 20:37+0200\n"
+"PO-Revision-Date: 2026-08-13 20:37\n"
+"Last-Translator: Tobias Berndt\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+#: pretix_trainings/apps.py:17
+#: pretix_trainings/signals.py:216
+msgid "Schulungen"
+msgstr "Schulungen"
+
+#: pretix_trainings/apps.py:20
+msgid "Raumverwaltung, mehrtaegige Kurse und Teilnahmebescheinigungen fuer pretix-Schulungen"
+msgstr "Raumverwaltung, mehrtaegige Kurse und Teilnahmebescheinigungen fuer pretix-Schulungen"
+
+#: pretix_trainings/bescheinigung_views.py:64
+msgid "Das Layout wurde angelegt."
+msgstr "Das Layout wurde angelegt."
+
+#: pretix_trainings/bescheinigung_views.py:79
+msgid "Wir konnten Ihre Änderungen nicht speichern. Details siehe unten."
+msgstr "Wir konnten Ihre Änderungen nicht speichern. Details siehe unten."
+
+#: pretix_trainings/bescheinigung_views.py:94
+#: pretix_trainings/bescheinigung_views.py:132
+#: pretix_trainings/bescheinigung_views.py:166
+msgid "Das gewünschte Layout existiert nicht."
+msgstr "Das gewünschte Layout existiert nicht."
+
+#: pretix_trainings/bescheinigung_views.py:107
+msgid "Das Standard-Layout wurde geändert."
+msgstr "Das Standard-Layout wurde geändert."
+
+#: pretix_trainings/bescheinigung_views.py:145
+msgid "Das Layout wurde gelöscht."
+msgstr "Das Layout wurde gelöscht."
+
+#: pretix_trainings/bescheinigung_views.py:170
+#, python-brace-format
+msgid "Bescheinigungs-Layout: {}"
+msgstr "Bescheinigungs-Layout: {}"
+
+#: pretix_trainings/exporters.py:19
+msgid "Teilnahmebescheinigungen (ZIP)"
+msgstr "Teilnahmebescheinigungen (ZIP)"
+
+#: pretix_trainings/exporters.py:21
+msgid "Alle bereits ausstellbaren Teilnahmebescheinigungen eines Termins als ZIP-Datei mit einer PDF-Datei je Position."
+msgstr "Alle bereits ausstellbaren Teilnahmebescheinigungen eines Termins als ZIP-Datei mit einer PDF-Datei je Position."
+
+#: pretix_trainings/exporters.py:24
+msgctxt "export_category"
+msgid "PDF collections"
+msgstr "PDF-Sammlungen"
+
+#: pretix_trainings/exporters.py:32
+#: pretix_trainings/signals.py:80 (Termin)
+msgid "Termin"
+msgstr "Termin"
+
+#: pretix_trainings/forms.py:17
+msgid "Name der Raum-Meta-Property"
+msgstr "Name der Raum-Meta-Property"
+
+#: pretix_trainings/forms.py:19
+msgid "Name der Event- bzw. Subevent-Meta-Property, deren Wert als Raum ausgewertet wird. Muss zu einer unter „Meta-Daten“ angelegten Eigenschaft passen."
+msgstr "Name der Event- bzw. Subevent-Meta-Property, deren Wert als Raum ausgewertet wird. Muss zu einer unter „Meta-Daten“ angelegten Eigenschaft passen."
+
+#: pretix_trainings/forms.py:25
+msgid "Betreff der Raumänderungs-Mail"
+msgstr "Betreff der Raumänderungs-Mail"
+
+#: pretix_trainings/forms.py:30
+msgid "Text der Raumänderungs-Mail"
+msgstr "Text der Raumänderungs-Mail"
+
+#: pretix_trainings/forms.py:35
+msgid "Kalenderdatei (ICS) an die Raumänderungs-Mail anhängen"
+msgstr "Kalenderdatei (ICS) an die Raumänderungs-Mail anhängen"
+
+#: pretix_trainings/forms.py:37
+msgid "Formal korrekt (aktualisierte SEQUENCE, METHOD:REQUEST), in der Praxis aber unzuverlässig: Outlook aktualisiert damit meist den vorhandenen Termin, viele andere Kalender-Apps legen stattdessen einen zweiten Termin an oder ignorieren die Datei komplett. Die E-Mail selbst bleibt in jedem Fall der verbindliche Kanal für die Raumänderung, unabhängig von dieser Einstellung."
+msgstr "Formal korrekt (aktualisierte SEQUENCE, METHOD:REQUEST), in der Praxis aber unzuverlässig: Outlook aktualisiert damit meist den vorhandenen Termin, viele andere Kalender-Apps legen stattdessen einen zweiten Termin an oder ignorieren die Datei komplett. Die E-Mail selbst bleibt in jedem Fall der verbindliche Kanal für die Raumänderung, unabhängig von dieser Einstellung."
+
+#: pretix_trainings/forms.py:46
+msgid "Ausstellungsregel für Teilnahmebescheinigungen"
+msgstr "Ausstellungsregel für Teilnahmebescheinigungen"
+
+#: pretix_trainings/forms.py:49
+msgid "always: verfügbar sobald der Termin vorbei ist. checkin_all: Check-in auf allen Session-Check-in-Listen erforderlich (ohne Sessions: Standard-Check-in-Liste des Termins). checkin_min: Check-in auf mindestens N Listen. manual: Freigabe je Bestellung durch Backend-Nutzer."
+msgstr "always: verfügbar sobald der Termin vorbei ist. checkin_all: Check-in auf allen Session-Check-in-Listen erforderlich (ohne Sessions: Standard-Check-in-Liste des Termins). checkin_min: Check-in auf mindestens N Listen. manual: Freigabe je Bestellung durch Backend-Nutzer."
+
+#: pretix_trainings/forms.py:57
+msgid "Mindestanzahl Check-ins (nur bei Regel „checkin_min“)"
+msgstr "Mindestanzahl Check-ins (nur bei Regel „checkin_min“)"
+
+#: pretix_trainings/forms.py:62
+msgid "Format der Bescheinigungsnummer"
+msgstr "Format der Bescheinigungsnummer"
+
+#: pretix_trainings/forms.py:64
+msgid "Python-Format-String mit den Platzhaltern {{nr}} (fortlaufende Nummer), {{event}} (Event-Kürzel) und {{jahr}} (Ausstellungsjahr), z. B. „{{event}}-{{jahr}}-{{nr:04d}}“."
+msgstr "Python-Format-String mit den Platzhaltern {{nr}} (fortlaufende Nummer), {{event}} (Event-Kürzel) und {{jahr}} (Ausstellungsjahr), z. B. „{{event}}-{{jahr}}-{{nr:04d}}“."
+
+#: pretix_trainings/forms.py:70
+msgid "Pausenabzug (Minuten pro Tag)"
+msgstr "Pausenabzug (Minuten pro Tag)"
+
+#: pretix_trainings/forms.py:72
+msgid "Wird von den Kursstunden abgezogen: einmal pro Session-Tag, bzw. einmal insgesamt, wenn Modul B (Sessions) nicht genutzt wird."
+msgstr "Wird von den Kursstunden abgezogen: einmal pro Session-Tag, bzw. einmal insgesamt, wenn Modul B (Sessions) nicht genutzt wird."
+
+#: pretix_trainings/forms.py:99
+#: pretix_trainings/forms.py:278
+msgid "Das Ende muss nach dem Start liegen."
+msgstr "Das Ende muss nach dem Start liegen."
+
+#: pretix_trainings/forms.py:125
+msgid "Diese Nummer wird bereits verwendet."
+msgstr "Diese Nummer wird bereits verwendet."
+
+#: pretix_trainings/forms.py:135
+msgid "Sessions dürfen sich zeitlich nicht überlappen."
+msgstr "Sessions dürfen sich zeitlich nicht überlappen."
+
+#: pretix_trainings/forms.py:151
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:3
+msgid "Sessions"
+msgstr "Sessions"
+
+#: pretix_trainings/forms.py:230
+#, python-format
+msgid "Die Check-in-Liste „%(name)s“ enthält bereits Check-ins und wurde deshalb nicht gelöscht."
+msgstr "Die Check-in-Liste „%(name)s“ enthält bereits Check-ins und wurde deshalb nicht gelöscht."
+
+#: pretix_trainings/forms.py:247
+#, python-format
+msgid "Achtung: Session „%(title)s“ liegt außerhalb des Zeitraums dieses Termins."
+msgstr "Achtung: Session „%(title)s“ liegt außerhalb des Zeitraums dieses Termins."
+
+#: pretix_trainings/forms.py:263
+msgid "täglich"
+msgstr "täglich"
+
+#: pretix_trainings/forms.py:264
+msgid "wöchentlich"
+msgstr "wöchentlich"
+
+#: pretix_trainings/forms.py:267
+msgid "Startdatum"
+msgstr "Startdatum"
+
+#: pretix_trainings/forms.py:268
+msgid "Uhrzeit von"
+msgstr "Uhrzeit von"
+
+#: pretix_trainings/forms.py:269
+msgid "Uhrzeit bis"
+msgstr "Uhrzeit bis"
+
+#: pretix_trainings/forms.py:270
+msgid "Anzahl Termine"
+msgstr "Anzahl Termine"
+
+#: pretix_trainings/forms.py:271
+msgid "Rhythmus"
+msgstr "Rhythmus"
+
+#: pretix_trainings/forms.py:302
+#: pretix_trainings/models.py:158
+msgid "Nur für folgende Produkte"
+msgstr "Nur für folgende Produkte"
+
+#: pretix_trainings/forms.py:303
+#: pretix_trainings/models.py:159
+msgid "Leer = für alle Produkte."
+msgstr "Leer = für alle Produkte."
+
+#: pretix_trainings/models.py:29
+msgid "Alter Raum"
+msgstr "Alter Raum"
+
+#: pretix_trainings/models.py:32
+msgid "Neuer Raum"
+msgstr "Neuer Raum"
+
+#: pretix_trainings/models.py:34
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:20
+msgid "Erkannt am"
+msgstr "Erkannt am"
+
+#: pretix_trainings/models.py:36
+msgid "Versendet am"
+msgstr "Versendet am"
+
+#: pretix_trainings/models.py:46
+msgid "Anzahl Empfänger"
+msgstr "Anzahl Empfänger"
+
+#: pretix_trainings/models.py:49
+msgid "Verworfen am"
+msgstr "Verworfen am"
+
+#: pretix_trainings/models.py:74
+msgid "Nummer"
+msgstr "Nummer"
+
+#: pretix_trainings/models.py:75
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:8
+msgid "Titel"
+msgstr "Titel"
+
+#: pretix_trainings/models.py:76
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:9
+msgid "Start"
+msgstr "Start"
+
+#: pretix_trainings/models.py:77
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:10
+msgid "Ende"
+msgstr "Ende"
+
+#: pretix_trainings/models.py:81
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:11
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:12
+msgid "Raum"
+msgstr "Raum"
+
+#: pretix_trainings/models.py:83
+msgid "Überschreibt für diesen Termin den Raum des Subevents. Leer = Raum des Subevents gilt."
+msgstr "Überschreibt für diesen Termin den Raum des Subevents. Leer = Raum des Subevents gilt."
+
+#: pretix_trainings/models.py:149
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:16
+msgid "Name"
+msgstr "Name"
+
+#: pretix_trainings/models.py:154
+msgid "Standard-Layout"
+msgstr "Standard-Layout"
+
+#: pretix_trainings/signals.py:80
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:5
+msgid "Offene Raumänderungen"
+msgstr "Offene Raumänderungen"
+
+#: pretix_trainings/signals.py:107
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:5
+msgid "Bescheinigungs-Layouts"
+msgstr "Bescheinigungs-Layouts"
+
+#: pretix_trainings/signals.py:128
+msgid "Bescheinigung: Teilnehmername"
+msgstr "Bescheinigung: Teilnehmername"
+
+#: pretix_trainings/signals.py:129
+msgid "Max Mustermann"
+msgstr "Max Mustermann"
+
+#: pretix_trainings/signals.py:133
+msgid "Bescheinigung: Kurstitel"
+msgstr "Bescheinigung: Kurstitel"
+
+#: pretix_trainings/signals.py:134
+msgid "Musterschulung"
+msgstr "Musterschulung"
+
+#: pretix_trainings/signals.py:138
+msgid "Bescheinigung: Kurstermine"
+msgstr "Bescheinigung: Kurstermine"
+
+#: pretix_trainings/signals.py:139
+msgid "Di, 15.09.2026, 09:00–17:00 Uhr"
+msgstr "Di, 15.09.2026, 09:00–17:00 Uhr"
+
+#: pretix_trainings/signals.py:143
+msgid "Bescheinigung: Kursstunden"
+msgstr "Bescheinigung: Kursstunden"
+
+#: pretix_trainings/signals.py:148
+msgid "Bescheinigung: Ausstellungsdatum"
+msgstr "Bescheinigung: Ausstellungsdatum"
+
+#: pretix_trainings/signals.py:153
+msgid "Bescheinigung: Bescheinigungsnummer"
+msgstr "Bescheinigung: Bescheinigungsnummer"
+
+#: pretix_trainings/views.py:135
+#: pretix_trainings/views.py:191
+msgid "Diese Raumänderung wurde bereits versendet oder verworfen."
+msgstr "Diese Raumänderung wurde bereits versendet oder verworfen."
+
+#: pretix_trainings/views.py:148
+#, python-format
+msgid "Die Benachrichtigung wird an %(count)s Empfänger versendet."
+msgstr "Die Benachrichtigung wird an %(count)s Empfänger versendet."
+
+#: pretix_trainings/views.py:188
+msgid "Die Raumänderung wurde verworfen."
+msgstr "Die Raumänderung wurde verworfen."
+
+#: pretix_trainings/views.py:249
+#, python-format
+msgid "Der Termin am %(day)s überschneidet sich mit einer bestehenden Session. Es wurde nichts angelegt."
+msgstr "Der Termin am %(day)s überschneidet sich mit einer bestehenden Session. Es wurde nichts angelegt."
+
+#: pretix_trainings/views.py:276
+#, python-format
+msgid "%(count)s der erzeugten Termine liegen außerhalb des Zeitraums dieses Termins."
+msgstr "%(count)s der erzeugten Termine liegen außerhalb des Zeitraums dieses Termins."
+
+#: pretix_trainings/views.py:284
+#, python-format
+msgid "%(count)s Termine wurden angelegt."
+msgstr "%(count)s Termine wurden angelegt."
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:3
+msgid "Layout löschen"
+msgstr "Layout löschen"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:16
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:16
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:17
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:24
+msgid "Abbrechen"
+msgstr "Abbrechen"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:19
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:19
+msgid "Löschen"
+msgstr "Löschen"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:4
+msgid "Neues Bescheinigungs-Layout"
+msgstr "Neues Bescheinigungs-Layout"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_form.html:19
+msgid "Anlegen"
+msgstr "Anlegen"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:8
+msgid "Neues Layout"
+msgstr "Neues Layout"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:17
+msgid "Nur für Produkte"
+msgstr "Nur für Produkte"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:18
+msgid "Standard"
+msgstr "Standard"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:34
+msgid "alle"
+msgstr "alle"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:43
+msgid "Als Standard setzen"
+msgstr "Als Standard setzen"
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_list.html:59
+msgid "Es wurde noch kein Bescheinigungs-Layout angelegt."
+msgstr "Es wurde noch kein Bescheinigungs-Layout angelegt."
+
+#: pretix_trainings/templates/pretix_trainings/order_bescheinigung.html:4
+msgid "Teilnahmebescheinigung"
+msgstr "Teilnahmebescheinigung"
+
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:4
+msgid "Termine dieses Kurses"
+msgstr "Termine dieses Kurses"
+
+#: pretix_trainings/templates/pretix_trainings/presale_termine.html:17
+msgid "Termine in Kalender exportieren"
+msgstr "Termine in Kalender exportieren"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:3
+msgid "Raumänderung: Vorschau & Senden"
+msgstr "Raumänderung: Vorschau & Senden"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:14
+msgid "Für diesen Termin gibt es aktuell keine passenden Bestellungen. Es würde niemand benachrichtigt."
+msgstr "Für diesen Termin gibt es aktuell keine passenden Bestellungen. Es würde niemand benachrichtigt."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:18
+msgid "Vorschau"
+msgstr "Vorschau"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:20
+msgid "Betreff"
+msgstr "Betreff"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:49
+msgid "Zurück"
+msgstr "Zurück"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:52
+msgid "Jetzt senden"
+msgstr "Jetzt senden"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:3
+msgid "Raumänderung verwerfen"
+msgstr "Raumänderung verwerfen"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:20
+msgid "Verwerfen"
+msgstr "Verwerfen"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:18
+msgid "Bisher"
+msgstr "Bisher"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:19
+msgid "Neu"
+msgstr "Neu"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:21
+msgid "Betroffene Bestellungen"
+msgstr "Betroffene Bestellungen"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:40
+msgid "Vorschau &amp; Senden"
+msgstr "Vorschau &amp; Senden"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:55
+msgid "Aktuell liegen keine offenen Raumänderungen vor."
+msgstr "Aktuell liegen keine offenen Raumänderungen vor."
+
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:4
+msgid "Termine erzeugen"
+msgstr "Termine erzeugen"
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:14
+msgid "Mehrere Termine auf einmal erzeugen"
+msgstr "Mehrere Termine auf einmal erzeugen"
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:16
+msgid "Änderungen an diesem Formular werden dabei nicht gespeichert."
+msgstr "Änderungen an diesem Formular werden dabei nicht gespeichert."
+
+#: pretix_trainings/templates/pretix_trainings/settings.html:5
+msgid "Schulungen-Einstellungen"
+msgstr "Schulungen-Einstellungen"
+
+#: pretix_trainings/templates/pretix_trainings/settings.html:15
+msgid "Speichern"
+msgstr "Speichern"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_termine.html:7
+msgid "Nr."
+msgstr "Nr."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_list.html:7
+msgid "Hier erscheinen Termine, deren Raum sich geändert hat. Solange ein Eintrag hier offen ist, wurde noch keine Benachrichtigung an die Teilnehmenden verschickt."
+msgstr "Hier erscheinen Termine, deren Raum sich geändert hat. Solange ein Eintrag hier offen ist, wurde noch keine Benachrichtigung an die Teilnehmenden verschickt."
+
+#: pretix_trainings/templates/pretix_trainings/session_formset.html:6
+msgid "Einzeltermine dieses Kursdurchlaufs. Sie sind nicht separat buchbar - buchbar bleibt ausschließlich der gesamte Termin. Bleibt der Raum leer, gilt der Raum des Termins."
+msgstr "Einzeltermine dieses Kursdurchlaufs. Sie sind nicht separat buchbar - buchbar bleibt ausschließlich der gesamte Termin. Bleibt der Raum leer, gilt der Raum des Termins."
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:9
+#, python-format
+msgid "Soll die erkannte Raumänderung für <strong>%(subevent)s</strong> (%(alt)s &rarr; %(neu)s) wirklich verworfen werden, ohne eine Benachrichtigung zu versenden?"
+msgstr "Soll die erkannte Raumänderung für <strong>%(subevent)s</strong> (%(alt)s &rarr; %(neu)s) wirklich verworfen werden, ohne eine Benachrichtigung zu versenden?"
+
+#: pretix_trainings/templates/pretix_trainings/order_bescheinigung.html:12
+#, python-format
+msgid "Bescheinigung für %(name)s herunterladen"
+msgstr "Bescheinigung für %(name)s herunterladen"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:28
+#, python-format
+msgid "Empfänger (1 Adresse)"
+msgid_plural "Empfänger (%(counter)s Adressen)"
+msgstr[0] "Empfänger (1 Adresse)"
+msgstr[1] "Empfänger (%(counter)s Adressen)"
+
+#: pretix_trainings/templates/pretix_trainings/session_bulk_create.html:8
+#, python-format
+msgid "Erzeugt mehrere Sessions für %(subevent)s auf einmal. Die erzeugten Sessions können anschließend im Termin-Editor einzeln angepasst werden."
+msgstr "Erzeugt mehrere Sessions für %(subevent)s auf einmal. Die erzeugten Sessions können anschließend im Termin-Editor einzeln angepasst werden."
+
+#: pretix_trainings/templates/pretix_trainings/bescheinigungslayout_delete.html:9
+#, python-format
+msgid "Soll das Bescheinigungs-Layout <strong>%(name)s</strong> wirklich gelöscht werden?"
+msgstr "Soll das Bescheinigungs-Layout <strong>%(name)s</strong> wirklich gelöscht werden?"
+
+#: pretix_trainings/dsgvo.py:196
+msgid "Teilnehmerdaten"
+msgstr "Teilnehmerdaten"
+
+#: pretix_trainings/dsgvo.py:198
+msgid "Namen und Anschriften auf den Buchungspositionen dieses Termins."
+msgstr "Namen und Anschriften auf den Buchungspositionen dieses Termins."
+
+#: pretix_trainings/dsgvo.py:206
+msgid "Fragen-Antworten"
+msgstr "Fragen-Antworten"
+
+#: pretix_trainings/dsgvo.py:208
+msgid "Antworten auf Bestellfragen zu Buchungspositionen dieses Termins."
+msgstr "Antworten auf Bestellfragen zu Buchungspositionen dieses Termins."
+
+#: pretix_trainings/dsgvo.py:215
+msgid "Tickets"
+msgstr "Tickets"
+
+#: pretix_trainings/dsgvo.py:217
+msgid "Zwischengespeicherte Ticket-PDFs. Werden bei Bedarf neu erzeugt."
+msgstr "Zwischengespeicherte Ticket-PDFs. Werden bei Bedarf neu erzeugt."
+
+#: pretix_trainings/dsgvo.py:224
+msgid "Kontaktdaten"
+msgstr "Kontaktdaten"
+
+#: pretix_trainings/dsgvo.py:226
+msgid "E-Mail-Adresse, Telefonnummer und Kundenkonto-Verknüpfung der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "E-Mail-Adresse, Telefonnummer und Kundenkonto-Verknüpfung der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+
+#: pretix_trainings/dsgvo.py:236
+msgid "Rechnungsadresse"
+msgstr "Rechnungsadresse"
+
+#: pretix_trainings/dsgvo.py:238
+msgid "Rechnungsadresse der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Rechnungsadresse der Bestellung - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+
+#: pretix_trainings/dsgvo.py:249
+msgid "Rechnungen"
+msgstr "Rechnungen"
+
+#: pretix_trainings/dsgvo.py:251
+msgid "Rechnungs-PDFs und deren personenbezogener Textinhalt. Rechnungsnummer und Beträge bleiben erhalten - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Rechnungs-PDFs und deren personenbezogener Textinhalt. Rechnungsnummer und Beträge bleiben erhalten - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+
+#: pretix_trainings/dsgvo.py:265
+msgid "Zahlungsdaten"
+msgstr "Zahlungsdaten"
+
+#: pretix_trainings/dsgvo.py:267
+msgid "Zahlungs- und Rückerstattungsdaten, soweit der jeweilige Zahlungsdienstleister eine Löschung unterstützt - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+msgstr "Zahlungs- und Rückerstattungsdaten, soweit der jeweilige Zahlungsdienstleister eine Löschung unterstützt - nur bei Bestellungen, die ausschließlich Positionen in bereits vergangenen Terminen enthalten."
+
+#: pretix_trainings/forms.py:311
+msgid "Ich habe geprüft, dass für die ausgewählten steuerrelevanten Daten keine gesetzliche Aufbewahrungspflicht mehr besteht."
+msgstr "Ich habe geprüft, dass für die ausgewählten steuerrelevanten Daten keine gesetzliche Aufbewahrungspflicht mehr besteht."
+
+#: pretix_trainings/forms.py:325
+msgid "Bitte mindestens eine Kategorie auswählen."
+msgstr "Bitte mindestens eine Kategorie auswählen."
+
+#: pretix_trainings/forms.py:330
+msgid "Für steuerrelevante Daten muss die Aufbewahrungsprüfung bestätigt werden."
+msgstr "Für steuerrelevante Daten muss die Aufbewahrungsprüfung bestätigt werden."
+
+#: pretix_trainings/views.py:338
+msgid "Dieser Termin liegt noch nicht in der Vergangenheit und kann deshalb noch nicht anonymisiert werden."
+msgstr "Dieser Termin liegt noch nicht in der Vergangenheit und kann deshalb noch nicht anonymisiert werden."
+
+#: pretix_trainings/views.py:373
+#, python-format
+msgid "Die ausgewählten Daten für „%(subevent)s“ wurden anonymisiert."
+msgstr "Die ausgewählten Daten für „%(subevent)s“ wurden anonymisiert."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:4
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:6
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_dsgvo.html:6
+msgid "Termindaten anonymisieren"
+msgstr "Termindaten anonymisieren"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:9
+#, python-format
+msgid "Entfernt personenbezogene Daten der Bestellungen zu %(subevent)s. Die Bestellungen selbst bleiben für Buchhaltung und Statistik erhalten - nur die ausgewählten Datenarten werden anonymisiert."
+msgstr "Entfernt personenbezogene Daten der Bestellungen zu %(subevent)s. Die Bestellungen selbst bleiben für Buchhaltung und Statistik erhalten - nur die ausgewählten Datenarten werden anonymisiert."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:16
+#, python-format
+msgid "Betroffene Bestellungen insgesamt: %(total)s, davon ausschließlich diesen Termin betreffend: %(fully)s."
+msgstr "Betroffene Bestellungen insgesamt: %(total)s, davon ausschließlich diesen Termin betreffend: %(fully)s."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:22
+msgid "Bei den übrigen Bestellungen enthält dieselbe Bestellung zusätzlich mindestens eine Position in einem noch nicht vergangenen Termin. Bei diesen werden nur die Teilnehmerdaten und Fragen-Antworten dieses Termins entfernt, nicht die bestellungsweiten Daten (Kontaktdaten, Rechnungsadresse, Rechnungen, Zahlungsdaten)."
+msgstr "Bei den übrigen Bestellungen enthält dieselbe Bestellung zusätzlich mindestens eine Position in einem noch nicht vergangenen Termin. Bei diesen werden nur die Teilnehmerdaten und Fragen-Antworten dieses Termins entfernt, nicht die bestellungsweiten Daten (Kontaktdaten, Rechnungsadresse, Rechnungen, Zahlungsdaten)."
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:33
+msgid "Datenart"
+msgstr "Datenart"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:34
+msgid "Betroffene Datensätze"
+msgstr "Betroffene Datensätze"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:44
+msgid "steuerrelevant"
+msgstr "steuerrelevant"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_anonymize.html:60
+msgid "Anonymisieren"
+msgstr "Anonymisieren"
+
+#: pretix_trainings/templates/pretix_trainings/subevent_detail_dsgvo.html:3
+msgid "Datenschutz"
+msgstr "Datenschutz"
+
+#: pretix_trainings/models.py:29
+msgid "Session"
+msgstr "Session"
+
+#: pretix_trainings/models.py:35
+msgid "Leer = der Raum des gesamten Termins hat sich geändert. Gesetzt = nur der Raum dieser einzelnen Session."
+msgstr "Leer = der Raum des gesamten Termins hat sich geändert. Gesetzt = nur der Raum dieser einzelnen Session."
+
+#: pretix_trainings/models.py:106
+#, python-format
+msgid "Tag %(n)s"
+msgstr "Tag %(n)s"
+
+#: pretix_trainings/placeholders.py:113
+#, python-format
+msgid "Betrifft: %(session)s"
+msgstr "Betrifft: %(session)s"
+
+#: pretix_trainings/placeholders.py:118
+msgid "Betrifft: Tag 2"
+msgstr "Betrifft: Tag 2"
+
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_detail.html:9
+#: pretix_trainings/templates/pretix_trainings/raumaenderung_discard.html:15
+#, python-format
+msgid "Betrifft nur Session: %(session)s"
+msgstr "Betrifft nur Session: %(session)s"
+
+#: pretix_trainings/templates/pretix_trainings/organizer_raumaenderung_list.html:7
+msgid "Alle offenen Raumänderungen über sämtliche Events dieses Veranstalters hinweg, für die Sie Bestellungen verwalten dürfen. Vorschau und Versand erfolgen weiterhin je Event."
+msgstr "Alle offenen Raumänderungen über sämtliche Events dieses Veranstalters hinweg, für die Sie Bestellungen verwalten dürfen. Vorschau und Versand erfolgen weiterhin je Event."
+
+#: pretix_trainings/templates/pretix_trainings/organizer_raumaenderung_list.html:19
+msgid "Event"
+msgstr "Event"

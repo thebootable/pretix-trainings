@@ -1,0 +1,31 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Termine erzeugen" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Termine erzeugen" %}</h1>
+    <p>
+        {% blocktrans trimmed with subevent=subevent %}
+            Erzeugt mehrere Sessions für {{ subevent }} auf einmal. Die erzeugten Sessions können
+            anschließend im Termin-Editor einzeln angepasst werden.
+        {% endblocktrans %}
+    </p>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_field form.start_date layout="horizontal" %}
+        {% bootstrap_field form.start_time layout="horizontal" %}
+        {% bootstrap_field form.end_time layout="horizontal" %}
+        {% bootstrap_field form.count layout="horizontal" %}
+        {% bootstrap_field form.frequency layout="horizontal" %}
+        <div class="form-group submit-group">
+            <a href="{% url "control:event.subevent.edit" organizer=request.event.organizer.slug event=request.event.slug subevent=subevent.pk %}"
+               class="btn btn-default btn-cancel">
+                {% trans "Abbrechen" %}
+            </a>
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Termine erzeugen" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

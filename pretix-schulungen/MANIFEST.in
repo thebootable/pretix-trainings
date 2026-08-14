@@ -1,5 +1,0 @@
-recursive-include pretix_schulungen/static *
-recursive-include pretix_schulungen/templates *
-recursive-include pretix_schulungen/locale *
-include LICENSE
-exclude .gitlab-ci.yml

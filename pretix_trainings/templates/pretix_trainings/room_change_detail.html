@@ -1,0 +1,61 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Raumänderung: Vorschau & Senden" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Raumänderung: Vorschau & Senden" %}</h1>
+    <p>
+        <strong>{{ room_change.subevent }}</strong>
+        ({{ room_change.subevent.date_from|date:"SHORT_DATETIME_FORMAT" }}):
+        {{ room_change.old_value }} &rarr; {{ room_change.new_value }}
+        {% if room_change.session %}
+            <br>{% blocktrans trimmed with session=room_change.session.short_label %}
+                Betrifft nur Session: {{ session }}
+            {% endblocktrans %}
+        {% endif %}
+    </p>
+
+    {% if not preview_text %}
+        <div class="alert alert-warning">
+            {% trans "Für diesen Termin gibt es aktuell keine passenden Bestellungen. Es würde niemand benachrichtigt." %}
+        </div>
+    {% else %}
+        <div class="panel panel-default">
+            <div class="panel-heading">{% trans "Vorschau" %}</div>
+            <div class="panel-body">
+                <p><strong>{% trans "Betreff" %}:</strong> {{ preview_subject }}</p>
+                <hr>
+                <div>{{ preview_text }}</div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {% blocktrans trimmed count counter=recipient_count %}
+                    Empfänger (1 Adresse)
+                {% plural %}
+                    Empfänger ({{ counter }} Adressen)
+                {% endblocktrans %}
+            </div>
+            <div class="panel-body">
+                <ul>
+                    {% for email in recipient_emails %}
+                        <li>{{ email }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group submit-group">
+            <a href="{% url "plugins:pretix_trainings:room_change.list" organizer=request.event.organizer.slug event=request.event.slug %}"
+               class="btn btn-default btn-cancel">
+                {% trans "Zurück" %}
+            </a>
+            <button type="submit" class="btn btn-primary btn-save" {% if not preview_text %}disabled{% endif %}>
+                {% trans "Jetzt senden" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

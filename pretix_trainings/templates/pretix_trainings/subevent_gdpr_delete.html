@@ -1,0 +1,64 @@
+{% extends "pretixcontrol/event/base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Termindaten anonymisieren" %}{% endblock %}
+{% block content %}
+    <h1>{% trans "Termindaten anonymisieren" %}</h1>
+    <p>
+        {% blocktrans trimmed with subevent=subevent %}
+            Entfernt personenbezogene Daten der Bestellungen zu {{ subevent }}. Die
+            Bestellungen selbst bleiben für Buchhaltung und Statistik erhalten -
+            nur die ausgewählten Datenarten werden anonymisiert.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans trimmed with total=order_count fully=fully_over_count %}
+            Betroffene Bestellungen insgesamt: {{ total }}, davon ausschließlich
+            diesen Termin betreffend: {{ fully }}.
+        {% endblocktrans %}
+    </p>
+    {% if order_count > fully_over_count %}
+        <div class="alert alert-warning">
+            {% trans "Bei den übrigen Bestellungen enthält dieselbe Bestellung zusätzlich mindestens eine Position in einem noch nicht vergangenen Termin. Bei diesen werden nur die Teilnehmerdaten und Fragen-Antworten dieses Termins entfernt, nicht die bestellungsweiten Daten (Kontaktdaten, Rechnungsadresse, Rechnungen, Zahlungsdaten)." %}
+        </div>
+    {% endif %}
+
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{% trans "Datenart" %}</th>
+                    <th>{% trans "Betroffene Datensätze" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.field }}</td>
+                        <td>
+                            <label for="{{ category.field.id_for_label }}">{{ category.label }}</label>
+                            {% if category.tax_relevant %}
+                                <span class="label label-warning">{% trans "steuerrelevant" %}</span>
+                            {% endif %}
+                            <p class="help-block">{{ category.description }}</p>
+                        </td>
+                        <td>{{ category.count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% bootstrap_field form.confirm_retention layout="horizontal" %}
+        <div class="form-group submit-group">
+            <a href="{% url "control:event.subevent" organizer=request.event.organizer.slug event=request.event.slug subevent=subevent.pk %}"
+               class="btn btn-default btn-cancel">
+                {% trans "Abbrechen" %}
+            </a>
+            <button type="submit" class="btn btn-danger btn-save">
+                {% trans "Anonymisieren" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

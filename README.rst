@@ -1,6 +1,10 @@
 Trainings
 ==========================
 
+.. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
+   :target: https://opensource.org/licenses/Apache-2.0
+   :alt: License: Apache 2.0
+
 This is a plugin for `pretix`_.
 
 Room management, multi-day courses and certificates of attendance for pretix trainings.

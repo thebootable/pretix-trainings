@@ -3,143 +3,140 @@ Trainings
 
 This is a plugin for `pretix`_.
 
-Raumverwaltung, mehrtägige Kurse und Teilnahmebescheinigungen für pretix-Schulungen.
+Room management, multi-day courses and certificates of attendance for pretix trainings.
 
-Das Plugin besteht aus drei unabhängig nutzbaren Modulen:
+The plugin consists of three independently usable modules:
 
-* **Raumänderung** – erkennt, wenn sich der Raum eines Termins (Event oder
-  Subevent) ändert, und lässt Betreiber:innen eine Benachrichtigung an alle
-  betroffenen Bestellungen mit Vorschau versenden, optional mit ICS-Anhang.
-* **Sessions** – bildet mehrtägige Kurse als mehrere Einzeltermine
-  (Sessions) innerhalb eines Subevents ab, inklusive Bulk-Erzeugung,
-  eigener Check-in-Listen je Session und ICS-Export für Teilnehmende.
-* **Teilnahmebescheinigung** – erzeugt PDF-Bescheinigungen aus einem im
-  Backend frei gestaltbaren Layout, mit konfigurierbarer Ausstellungsregel,
-  fortlaufender Bescheinigungsnummer und ZIP-Sammelexport.
+* **Room change** – detects when the room of a date (event or subevent)
+  changes, and lets organizers send a notification with preview to all
+  affected orders, optionally with an ICS attachment.
+* **Sessions** – models multi-day courses as multiple individual dates
+  (sessions) within one subevent, including bulk creation, per-session
+  check-in lists and an ICS export for attendees.
+* **Certificate of attendance** – generates PDF certificates from a layout
+  that can be freely designed in the backend, with a configurable issuance
+  rule, a sequential certificate number and a ZIP bulk export.
 
 Installation
 ------------
 
-1. Stelle sicher, dass eine lauffähige pretix-Installation (>= 2026.7.0)
-   vorhanden ist, siehe die offizielle `Installationsanleitung`_.
-2. Aktiviere die virtuelle Umgebung, in der pretix installiert ist.
-3. Installiere dieses Plugin in dieselbe Umgebung, z. B. mit::
+1. Make sure you have a working pretix installation (>= 2026.7.0), see the
+   official `installation guide`_.
+2. Activate the virtual environment pretix is installed in.
+3. Install this plugin into the same environment, e.g. with::
 
-       pip install -e /pfad/zu/pretix-trainings
+       pip install -e /path/to/pretix-trainings
 
-   oder, sofern das Plugin auf PyPI veröffentlicht wird, mit
+   or, once the plugin is published on PyPI, with
    ``pip install pretix-trainings``.
-4. Führe ``make`` innerhalb dieses Verzeichnisses aus, um die
-   Übersetzungen zu kompilieren (nicht nötig, wenn per ``pip install`` aus
-   einem bereits gebauten Paket installiert wurde).
-5. Starte pretix neu (bzw. den Worker-Prozess, falls Celery separat läuft).
-6. Aktiviere das Plugin je Veranstalter/Event im Reiter "Plugins" der
-   Event-Einstellungen.
+4. Run ``make`` inside this directory to compile the translations (not
+   needed if installed via ``pip install`` from an already-built package).
+5. Restart pretix (and the worker process, if Celery runs separately).
+6. Enable the plugin per organizer/event in the "Plugins" tab of the event
+   settings.
 
-Konfiguration
+Configuration
 --------------
 
-Alle Einstellungen befinden sich im Event-Backend unter
-**Einstellungen → Schulungen** sowie – für die Teilnahmebescheinigung – unter
-dem eigenen Menüpunkt **Bescheinigungs-Layouts**.
+All settings live in the event backend under **Settings → Trainings**, and
+- for the certificate of attendance - under the separate **Certificate
+Layouts** menu item.
 
-Raum & Raumänderung
-^^^^^^^^^^^^^^^^^^^^
+Room & room change
+^^^^^^^^^^^^^^^^^^^
 
-* **Name der Raum-Meta-Property** (``training_room_property``, Default
-  ``Raum``) – die Event-/Subevent-Meta-Data-Eigenschaft, deren Wert als Raum
-  ausgewertet wird. Muss unter "Meta-Daten" existieren.
-* **Betreff / Text der Raumänderungs-Mail** – mit den regulären
-  pretix-Platzhaltern sowie den unten beschriebenen Schulungen-Platzhaltern.
-* **Kalenderdatei (ICS) an die Raumänderungs-Mail anhängen** – standardmäßig
-  aus, da der ICS-Anhang je nach Mail-Client die Raumänderung unzuverlässig
-  überträgt; verbindlicher Kanal bleibt in jedem Fall der Mailtext selbst.
+* **Room meta property name** (``training_room_property``, default
+  ``Raum``) – the event/subevent meta data property whose value is
+  evaluated as the room. Must exist under "Meta data".
+* **Subject / text of the room change email** – with the regular pretix
+  placeholders as well as the training-specific placeholders described
+  below.
+* **Attach calendar file (ICS) to the room change email** – off by
+  default, since the ICS attachment conveys the room change unreliably
+  depending on the mail client; the binding channel always remains the
+  email text itself.
 
-Erkannte Raumänderungen erscheinen unter **Offene Raumänderungen** im
-Event-Menü und müssen dort aktiv mit Vorschau versendet oder verworfen
-werden – es wird nie automatisch eine Mail verschickt. Das gilt sowohl für
-den Raum des gesamten Termins als auch – bei mehrtägigen Terminen mit
-Sessions – für den Raum einzelner Sessions: ändert sich nur der Raum eines
-einzelnen Tages, erscheint dafür ein eigener, unabhängiger Eintrag,
-erkennbar an der betroffenen Session.
+Detected room changes appear under **Open room changes** in the event
+menu and must be actively sent with preview, or discarded, from there – no
+email is ever sent automatically. This applies both to the room of the
+entire date and - for multi-day dates with sessions - to the room of
+individual sessions: if only the room of a single day changes, a separate,
+independent entry appears for it, identifiable by the affected session.
 
-Zusätzlich gibt es unter **Veranstalter → Offene Raumänderungen**
-(``/control/organizer/<slug>/trainings/room-changes/``) eine
-event-übergreifende Übersicht: alle offenen Raumänderungen über sämtliche
-Events dieses Veranstalters hinweg, für die man Bestellungen verwalten
-darf. Vorschau und Versand erfolgen von dort aus weiterhin je Event über
-dieselben Links wie in der Event-Ansicht.
+There is also an event-spanning overview under **Organizer → Open room
+changes** (``/control/organizer/<slug>/trainings/room-changes/``): all
+open room changes across every event of this organizer that you are
+allowed to manage orders for. Preview and sending still happen per event
+from there, via the same links as in the event view.
 
-Sessions (mehrtägige Kurse)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sessions (multi-day courses)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sessions werden direkt im Termin-Editor eines Subevents gepflegt (eigener
-Formset-Abschnitt) oder über **Mehrere Termine auf einmal erzeugen**
-(Bulk-Erzeugung nach Rhythmus, Uhrzeit und Anzahl). Jede Session kann einen
-eigenen Raum (überschreibt sonst den Raum des Subevents) sowie eine eigene
-Check-in-Liste haben.
+Sessions are managed directly in a subevent's date editor (its own formset
+section) or via **Create multiple dates at once** (bulk creation by
+frequency, time and count). Each session can have its own room (otherwise
+overriding the subevent's room) as well as its own check-in list.
 
-Teilnahmebescheinigung
-^^^^^^^^^^^^^^^^^^^^^^^
+Certificate of attendance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Ausstellungsregel für Teilnahmebescheinigungen**
-  (``training_certificate_rule``, Default ``checkin_all``):
+* **Issuance rule for certificates of attendance**
+  (``training_certificate_rule``, default ``checkin_all``):
 
-  - ``always`` – verfügbar, sobald der Termin vorbei ist.
-  - ``checkin_all`` – Check-in auf allen Session-Check-in-Listen
-    erforderlich (ohne Sessions: die Standard-Check-in-Liste des Termins).
-  - ``checkin_min`` – Check-in auf mindestens N Listen, siehe
-    **Mindestanzahl Check-ins**.
-  - ``manual`` – Freigabe je Bestellung durch Backend-Nutzer:innen.
+  - ``always`` – available as soon as the date is over.
+  - ``checkin_all`` – check-in on all session check-in lists required
+    (without sessions: the date's default check-in list).
+  - ``checkin_min`` – check-in on at least N lists, see **Minimum number
+    of check-ins**.
+  - ``manual`` – approval per order by backend staff.
 
-* **Format der Bescheinigungsnummer** (``training_certificate_number_format``,
-  Default ``{event}-{jahr}-{nr:04d}``) – Python-Format-String mit den
-  Platzhaltern ``{nr}`` (fortlaufende Nummer), ``{event}`` (Event-Kürzel)
-  und ``{jahr}`` (Ausstellungsjahr).
-* **Pausenabzug (Minuten pro Tag)**
-  (``training_certificate_break_deduction``, Default ``0``) – wird von den
-  Kursstunden abgezogen, einmal pro Session-Tag bzw. einmal insgesamt ohne
-  Sessions.
+* **Certificate number format** (``training_certificate_number_format``,
+  default ``{event}-{jahr}-{nr:04d}``) – Python format string with the
+  placeholders ``{nr}`` (sequential number), ``{event}`` (event slug) and
+  ``{jahr}`` (year of issue).
+* **Break deduction (minutes per day)**
+  (``training_certificate_break_deduction``, default ``0``) – deducted
+  from the course hours, once per session day, or once in total without
+  sessions.
 
-Das PDF-Layout selbst wird unter **Bescheinigungs-Layouts** mit dem
-gewohnten pretix-Editor gestaltet (frei platzierbare Textfelder auf einem
-Hintergrund-PDF). Layouts können auf bestimmte Produkte eingeschränkt werden
-oder als Standard-Layout für alle sonst nicht abgedeckten Produkte gelten.
-Verfügbare Layout-Variablen: ``attendee_name``, ``course_title``,
-``course_dates``, ``course_hours``, ``issue_date`` und
-``certificate_number``.
+The PDF layout itself is designed under **Certificate Layouts** with the
+familiar pretix editor (freely placeable text fields on a background PDF).
+Layouts can be restricted to specific products, or serve as the default
+layout for all products not otherwise covered. Available layout
+variables: ``attendee_name``, ``course_title``, ``course_dates``,
+``course_hours``, ``issue_date`` and ``certificate_number``.
 
-Mail-Platzhalter
-^^^^^^^^^^^^^^^^
+Mail placeholders
+^^^^^^^^^^^^^^^^^^
 
-Das Plugin registriert folgende Platzhalter für Bestellbestätigung, geplante
-E-Mail-Regeln und Massenmail:
+The plugin registers the following placeholders for the order
+confirmation, scheduled email rules and bulk mail:
 
 .. list-table::
    :header-rows: 1
 
-   * - Platzhalter
-     - Inhalt
+   * - Placeholder
+     - Content
    * - ``{training_room}``
-     - Wert der Raum-Meta-Property (leer, falls nicht gesetzt)
+     - Value of the room meta property (empty if not set)
    * - ``{training_dates}``
-     - Terminliste aus den Sessions, sonst Termin-Datum
+     - Date list from the sessions, otherwise the date of the event/subevent
    * - ``{training_certificate_url}``
-     - Download-Link zur Teilnahmebescheinigung
+     - Download link for the certificate of attendance
    * - ``{training_room_old}``
-     - Nur in der Raumänderungs-Mail: bisheriger Raum
+     - Only in the room change email: previous room
    * - ``{training_room_new}``
-     - Nur in der Raumänderungs-Mail: neuer Raum
+     - Only in the room change email: new room
    * - ``{training_room_session}``
-     - Nur in der Raumänderungs-Mail: "Betrifft: <Session>", falls sich nur der Raum
-       einer einzelnen Session eines mehrtägigen Termins geändert hat, sonst leer
+     - Only in the room change email: "Affects: <session>", if only the
+       room of a single session of a multi-day date has changed, empty
+       otherwise
 
-**Hinweis für Redakteur:innen von Mailvorlagen:** Ab Einführung des
-Platzhalters ``{training_room}`` darf in keiner Mailvorlage mehr ein Raum
-fest eingetragen werden. Das ist die eigentliche Wirkung dieses
-Teilmoduls – nur so wird sichergestellt, dass eine spätere Raumänderung
-tatsächlich überall ankommt, statt in fest eingetragenem Text veraltet zu
-bleiben.
+**Note for editors of mail templates:** From the moment the
+``{training_room}`` placeholder is introduced, no mail template may
+hard-code a room anymore. That is the actual purpose of this submodule -
+it's the only way to ensure that a later room change actually reaches
+everyone, instead of staying stuck as outdated hard-coded text.
 
 Development setup
 -----------------
@@ -187,4 +184,4 @@ Released under the terms of the Apache License 2.0
 
 .. _pretix: https://github.com/pretix/pretix
 .. _pretix development setup: https://docs.pretix.eu/en/latest/development/setup.html
-.. _Installationsanleitung: https://docs.pretix.eu/en/latest/admin/installation/index.html
+.. _installation guide: https://docs.pretix.eu/en/latest/admin/installation/index.html

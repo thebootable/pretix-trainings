@@ -2,4 +2,7 @@ recursive-include pretix_trainings/static *
 recursive-include pretix_trainings/templates *
 recursive-include pretix_trainings/locale *
 include LICENSE
+include CHANGELOG.rst
+include NOTES.md
 exclude .gitlab-ci.yml
+exclude konzept-pretix-schulungen.md

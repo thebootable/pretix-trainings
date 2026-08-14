@@ -115,18 +115,24 @@ Mail-Platzhalter
 Das Plugin registriert folgende Platzhalter für Bestellbestätigung, geplante
 E-Mail-Regeln und Massenmail:
 
-======================================  ==================================================
-Platzhalter                             Inhalt
-======================================  ==================================================
-``{training_room}``                     Wert der Raum-Meta-Property (leer, falls nicht gesetzt)
-``{training_dates}``                  Terminliste aus den Sessions, sonst Termin-Datum
-``{training_certificate_url}``        Download-Link zur Teilnahmebescheinigung
-``{training_room_old}``                 Nur in der Raumänderungs-Mail: bisheriger Raum
-``{training_room_new}``                 Nur in der Raumänderungs-Mail: neuer Raum
-``{training_room_session}``             Nur in der Raumänderungs-Mail: "Betrifft: <Session>",
-                                         falls sich nur der Raum einer einzelnen Session eines
-                                         mehrtägigen Termins geändert hat, sonst leer
-======================================  ==================================================
+.. list-table::
+   :header-rows: 1
+
+   * - Platzhalter
+     - Inhalt
+   * - ``{training_room}``
+     - Wert der Raum-Meta-Property (leer, falls nicht gesetzt)
+   * - ``{training_dates}``
+     - Terminliste aus den Sessions, sonst Termin-Datum
+   * - ``{training_certificate_url}``
+     - Download-Link zur Teilnahmebescheinigung
+   * - ``{training_room_old}``
+     - Nur in der Raumänderungs-Mail: bisheriger Raum
+   * - ``{training_room_new}``
+     - Nur in der Raumänderungs-Mail: neuer Raum
+   * - ``{training_room_session}``
+     - Nur in der Raumänderungs-Mail: "Betrifft: <Session>", falls sich nur der Raum
+       einer einzelnen Session eines mehrtägigen Termins geändert hat, sonst leer
 
 **Hinweis für Redakteur:innen von Mailvorlagen:** Ab Einführung des
 Platzhalters ``{training_room}`` darf in keiner Mailvorlage mehr ein Raum
